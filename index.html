@@ -204,9 +204,8 @@
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.js"></script>
 	<script>
-		// Calculate seconds since 7 of april 2023 23:06 UTC+4 time and display
+		// Calculate seconds since 7 of april 2022 23:06 UTC+3 time and display
 		// them in the element with id #time-counter and update every second
-		Date.UTC(2022, 4, 7, 23, 6, 0)
 		var countDownDate = new Date("2022-04-07T22:06:00.000+03:00").getTime();
 		var x = setInterval(function() {
 			var now = new Date().getTime();
@@ -214,10 +213,12 @@
 			var seconds = Math.floor(distance / 1000);
 			document.getElementById("time-counter").innerHTML = `Уже <p style="display: inline; font-size: 1.5em;">${seconds.toLocaleString()}</p> секунд вместе ❤️`;
 		}, 1000);
-
 		// Get the audio elements
 		var music1 = document.getElementById("music1");
 		var music2 = document.getElementById("music2");
+		// Set the volume
+		music1.volume = 1.0;
+		music2.volume = 0.3;
 		// Initialize Reveal.js
 		Reveal.initialize({
 			hash: true,
@@ -225,8 +226,7 @@
 			transition: 'zoom',
 			transitionSpeed: 'slow',
 		});
-		document.getElementById("music1").volume = 0.1;
-		document.getElementById("music2").volume = 0.1;
+		// Pause the music when the slide changes
 		Reveal.on( 'slidechanged', event => {
 			if (event.indexh >= 7) {
 				music1.pause();
